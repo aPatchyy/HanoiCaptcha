@@ -1,0 +1,43 @@
+html,
+body {
+    font-family: sans-serif;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#captcha-container {
+    height: 100%;
+    user-select: none;
+    background-image: url(img/towers.png);
+    background-size: contain;
+}
+
+.moving {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.disk {
+    height:15px
+}
+
+.top {
+    cursor: pointer;
+}
+
+.tower {
+    transform: translate(-50%, -100%);
+    position: absolute;
+    top: 289px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
