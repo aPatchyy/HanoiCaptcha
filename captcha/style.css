@@ -1,6 +1,6 @@
 html,
 body {
-    font-family: sans-serif;
+    font-family: "Poetsen One", sans-serif;
     height: 100%;
     position: relative;
     overflow: hidden;
@@ -19,6 +19,14 @@ body {
     background-size: contain;
 }
 
+#instruction {
+    margin: 10px;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    flex-direction: column;
+}
+
 .moving {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -35,7 +43,7 @@ body {
 .tower {
     transform: translate(-50%, -100%);
     position: absolute;
-    top: 289px;
+    top: 298px;
     display: flex;
     flex-direction: column;
     align-items: center;

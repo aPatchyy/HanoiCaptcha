@@ -41,7 +41,7 @@ function initialize() {
 function handlePickup(e) {
     if(!e.target.classList.contains("top") || !e.isPrimary)
         return
-
+    
     selectedDisk = e.target
     startTower = towers.find(tower => tower.element === e.target.parentElement)
 
@@ -59,6 +59,8 @@ function handlePickup(e) {
 }
 
 function handlePlace(e) {
+    if(selectedDisk === null)
+        return
     selectedDisk.style.left = 0
     selectedDisk.style.top = 0
     selectedDisk.classList.remove("moving")
