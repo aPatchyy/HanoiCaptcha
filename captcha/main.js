@@ -1,7 +1,8 @@
+// Max number of disks is 7
+const NUMBER_OF_DISKS = 6
 
-const NUMBER_OF_DISKS = 4
-const DISK_HEIGHT = 15
 const TOWER_RADIUS = 65
+
 const towers = [
     {
         element: document.getElementById("tower-left"),
@@ -21,7 +22,6 @@ const towers = [
 ]
 
 const container = document.getElementById("captcha-container")
-
 let selectedDisk = null
 let startTower = null
 let endTower = null
@@ -35,13 +35,22 @@ function initialize() {
     for(let i = NUMBER_OF_DISKS; i > 0; i--) {
         towers[0].disks.push(i)
     }
-    updateTower(towers[0])
+
+    for(let i=towers[0].disks.length-1; i>=0; i--) {
+        let disk = document.createElement("img")
+        disk.src = `img/disk-${towers[0].disks[i]}.png`
+        disk.classList.add("disk")
+        disk.setAttribute("draggable", "false")
+        if(i === towers[0].disks.length - 1)
+            disk.classList.add("top")
+        towers[0].element.appendChild(disk)
+    }
 }
 
 function handlePickup(e) {
     if(!e.target.classList.contains("top") || !e.isPrimary)
         return
-    
+
     selectedDisk = e.target
     startTower = towers.find(tower => tower.element === e.target.parentElement)
 
@@ -102,21 +111,6 @@ function handleMove(e) {
     let y = e.pageY
     selectedDisk.style.left = x + "px"
     selectedDisk.style.top = y + "px"
-}
-
-function updateTower(tower) {
-    tower.element.innerHTML = ''
-    if(tower.disks.length === 0)
-        return
-    for(let i=tower.disks.length-1; i>=0; i--) {
-        let disk = document.createElement("img")
-        disk.src = `img/disk-${tower.disks[i]}.png`
-        disk.classList.add("disk")
-        disk.setAttribute("draggable", "false")
-        if(i === tower.disks.length - 1)
-            disk.classList.add("top")
-        tower.element.appendChild(disk)
-    }
 }
 
 initialize()
